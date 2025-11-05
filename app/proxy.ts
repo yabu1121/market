@@ -21,6 +21,6 @@ export const config = {
   matcher: [
     "/api/item/create",
     "/api/item/update/:path*",
-    "/api/item/dekete/:path*"
+    "/api/item/delete/:path*",
   ],
 }

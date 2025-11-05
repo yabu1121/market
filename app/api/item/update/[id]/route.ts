@@ -10,6 +10,8 @@ export const PUT = async (request:any, context:any) => {
       if(error)throw new Error(error.message);
       if(data.email === req.email){
         const {error} = await supabase.from("items").update(req).eq("id",params.id);
+        if(error)throw new Error(error.message);
+        return NextResponse.json({message: "update item"});
       }else{
         return NextResponse.json({message: "ほかの人が作成したアイテムです"})
       }
