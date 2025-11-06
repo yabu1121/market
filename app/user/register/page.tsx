@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e :any) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/user/register",{
+      const res = await fetch("/api/user/register",{
         method: "POST",
         headers: {
           "Accept": "application/json",
