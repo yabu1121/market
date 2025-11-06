@@ -13,7 +13,6 @@ export const POST = async (request:any) => {
           email: req.email,
         } 
         const token = await new SignJWT(payload).setProtectedHeader({alg: "HS256"}).setExpirationTime("1d").sign(secretKey);
-        console.log(token);
         return NextResponse.json({message: "success log in",token: token});
       }else{
         return NextResponse.json({message: "wrong"});

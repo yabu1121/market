@@ -1,51 +1,37 @@
 'use client'
 
 import { useState } from "react"
+import { json } from "stream/consumers";
 
-const RegisterPage = () => {
-  const [name, setName] = useState("");
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleSubmit = async (e :any) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/user/register",{
+      const res = await fetch("api/user/login", {
         method: "POST",
         headers: {
-          "Accept": "application/json",
-          "Content-Type":"application/json"
+          "Accept" : "application/json",
+          "Content-Type" : "application/json"
         },
         body: JSON.stringify({
-          name: name,
-          email: email,
-          password: password
+          email:email,
+          password:password
         })
-      })
+      });
       const jsonData = await res.json();
+      console.log(jsonData);
+      localStorage.setItem("token", jsonData.token);
       alert(jsonData.message);
-      setName("");
-      setEmail("");
-      setPassword("");
     } catch (error) {
-      alert("ユーザ登録失敗")
+      alert("ログイン失敗");
     }
   }
   return (
-    <div className="w-full h-full m-0 auto">
-      <h1>ユーザ登録</h1>
-      <form 
-        action=""
-        onSubmit={handleSubmit}
-      >
-        <input 
-          type="name" 
-          value={name}
-          onChange={(e) => {setName(e.target.value)}}
-          placeholder="名前"
-          className="border rounded-lg shadow-2xl block m-4"
-          required
-        />
+    <div>
+      <h1>ログインページ</h1>
+      <form onSubmit={handleSubmit}>
         <input 
           type="email" 
           value={email}
@@ -64,11 +50,10 @@ const RegisterPage = () => {
         />   
         <button  
           className="bg-gray-500 text-white px-4 py-4 m-4 hover:bg-gray-400"
-        >登録</button>     
-
+        >登録</button> 
       </form>
     </div>
   )
 }
 
-export default RegisterPage
+export default LoginPage
