@@ -5,8 +5,8 @@ import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 
 const Header = () => {
-  const router = useRouter()
-  const pathname = usePathname()
+  const router = useRouter();
+  const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -17,12 +17,14 @@ const Header = () => {
       }
     }
 
+    // 初回レンダリング時に実行
     checkLoginStatus()
 
     const handleStorageChange = () => {
       checkLoginStatus()
     }
 
+    // 'storage'が変化した場合、ログインステータスを確認する。
     window.addEventListener('storage', handleStorageChange)
 
     const interval = setInterval(checkLoginStatus, 1000)
@@ -34,6 +36,7 @@ const Header = () => {
   }, [pathname])
 
   const handleLogout = () => {
+    // tokenを消すことによりホーム画面に移動してログアウトをする。
     localStorage.removeItem("token")
     setIsLoggedIn(false)
     router.push("/")
@@ -47,7 +50,7 @@ const Header = () => {
           <Link href="/" className="text-2xl font-bold hover:text-gray-300 transition-colors">マーケット</Link>
           <nav>
             <ul className="flex gap-6 items-center">
-              <li><Link href="/"className="hover:text-gray-300 transition-colors">ホーム</Link></li>
+              <li><Link href="/" className="hover:text-gray-300 transition-colors">ホーム</Link></li>
               {isLoggedIn ? (
                 <>
                   <li><Link href="/item/create" className="hover:text-gray-300 transition-colors">新規投稿</Link></li>
