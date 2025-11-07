@@ -1,8 +1,25 @@
-import { Params } from "next/dist/server/request/params"
+interface Props {
+  params: Promise<{ id: string }>
+}
 
-const ReadSinglePage = ({params}: Params) => {
+const ReadSinglePage = async ({ params }: Props) => {
+  const { id } = await params
+  
+  const res = await fetch(`http://localhost:3000/api/item/readsingle/${id}`, {
+    cache: "no-store"
+  })
+  const jsonData = await res.json()
+  const item = jsonData.singleItem
+
   return (
-    <div>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">{item.title}</h1>
+      <p className="text-2xl font-bold mb-4">¥{item.price}</p>
+      {item.image && (
+        <img src={item.image} alt={item.title} className="mb-4 max-w-md" />
+      )}
+      <p className="text-gray-700">{item.description}</p>
+      <p className="text-sm text-gray-500 mt-4">ID: {id}</p>
     </div>
   )
 }

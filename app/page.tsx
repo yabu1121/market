@@ -14,23 +14,25 @@ const ReadAllItems = async () => {
   const allItem = await getAllItems();
   console.log(allItem);
   return (
-    <div>
-      <h1>hello</h1>
+    <div className="grid grid-cols-3 m-4 gap-4">
       {allItem.map((item :any) => {
         return(
-          <Link href={`/item/readsingle/${item.id}`} key={item.id}>
-            <Image
-              src={item.image}
-              alt={`${item.title} image`}
-              width={400}
-              height={400}
-              priority
-            />
-            <div>
-              <p>{item.title}</p>
-              <p>{item.price}</p>
-            </div>
-          </Link>
+          <div key={item.id}>
+            <Link href={`/item/readsingle/${item.id}`}>
+              <div className="border relative rounded-2xl hover:shadow-2xl transition-all">
+                <Image
+                  src={item.image}
+                  alt={`${item.title} image`}
+                  width={400}
+                  height={400}
+                  className="rounded-2xl w-90 h-75"
+                  priority
+                />
+                  <p className="p-8">{item.title}</p>
+                  <p className="absolute bottom-4 right-4">¥{item.price}</p>
+              </div>
+            </Link>
+          </div>
         )
       })}
     </div>

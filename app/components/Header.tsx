@@ -33,6 +33,7 @@ const Header = () => {
       window.removeEventListener('storage', handleStorageChange)
       clearInterval(interval)
     }
+    // 監視対象 pathname
   }, [pathname])
 
   const handleLogout = () => {
