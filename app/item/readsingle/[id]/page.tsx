@@ -1,3 +1,8 @@
+import BuyButton from "@/app/components/BuyButton"
+import DeleteButton from "@/app/components/DeleteButton"
+import ReturnButton from "@/app/components/ReturnButton"
+import UpdateButton from "@/app/components/UpdateButton"
+
 interface Props {
   params: Promise<{ id: string }>
 }
@@ -13,6 +18,10 @@ const ReadSinglePage = async ({ params }: Props) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <ReturnButton />
+      <DeleteButton />
+      <UpdateButton />
+      <BuyButton />
       <h1 className="text-3xl font-bold mb-4">{item.title}</h1>
       <p className="text-2xl font-bold mb-4">¥{item.price}</p>
       {item.image && (
