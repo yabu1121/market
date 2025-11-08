@@ -23,7 +23,7 @@ const ReadSinglePage = async ({ params }: Props) => {
         <ReturnButton />
         <DeleteButton params={id} />
         <UpdateButton params={id}/>
-        <BuyButton />
+        <BuyButton params={id}/>
       </div>
       <h1 className="text-3xl font-bold mb-4 overflow-scroll">{item.title}</h1>
       <p className="text-2xl font-bold mb-4">¥{item.price}</p>
@@ -36,7 +36,7 @@ const ReadSinglePage = async ({ params }: Props) => {
           className="mb-4 max-w-wd"
           />
         )}
-      <p className="text-gray-700 break-words">{item.description}</p>
+      <p className="text-gray-700 wrap-break-words">{item.description}</p>
       <p className="text-sm text-gray-500 mt-4">ID: {id}</p>
     </div>
   )
