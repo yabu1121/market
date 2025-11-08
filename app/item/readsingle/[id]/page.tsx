@@ -2,6 +2,7 @@ import BuyButton from "@/app/components/BuyButton"
 import DeleteButton from "@/app/components/DeleteButton"
 import ReturnButton from "@/app/components/ReturnButton"
 import UpdateButton from "@/app/components/UpdateButton"
+import Image from "next/image"
 
 interface Props {
   params: Promise<{ id: string }>
@@ -18,16 +19,24 @@ const ReadSinglePage = async ({ params }: Props) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <ReturnButton />
-      <DeleteButton />
-      <UpdateButton />
-      <BuyButton />
-      <h1 className="text-3xl font-bold mb-4">{item.title}</h1>
+      <div className="flex space-between">
+        <ReturnButton />
+        <DeleteButton params={id} />
+        <UpdateButton params={id}/>
+        <BuyButton />
+      </div>
+      <h1 className="text-3xl font-bold mb-4 overflow-scroll">{item.title}</h1>
       <p className="text-2xl font-bold mb-4">¥{item.price}</p>
       {item.image && (
-        <img src={item.image} alt={item.title} className="mb-4 max-w-md" />
-      )}
-      <p className="text-gray-700">{item.description}</p>
+        <Image
+          src={item.image}
+          alt={item.title}
+          width={200}
+          height={200}
+          className="mb-4 max-w-wd"
+          />
+        )}
+      <p className="text-gray-700 break-words">{item.description}</p>
       <p className="text-sm text-gray-500 mt-4">ID: {id}</p>
     </div>
   )

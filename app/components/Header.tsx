@@ -48,19 +48,19 @@ const Header = () => {
     <header className="bg-gray-800 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold hover:text-gray-300 transition-colors">マーケット</Link>
+          <Link href="/" className="md:text-2xl font-bold hover:text-gray-300 transition-colors">??オークション??</Link>
           <nav>
             <ul className="flex gap-6 items-center">
-              <li><Link href="/" className="hover:text-gray-300 transition-colors">ホーム</Link></li>
+              <li><Link href="/" className="text-sm hover:text-gray-300 transition-colors">ホーム</Link></li>
               {isLoggedIn ? (
                 <>
-                  <li><Link href="/item/create" className="hover:text-gray-300 transition-colors">新規投稿</Link></li>
-                  <li><button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">ログアウト</button></li>
+                  <li><Link href="/item/create" className="text-sm hover:text-gray-300 transition-colors">新規投稿</Link></li>
+                  <li><button onClick={handleLogout} className="text-sm bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">ログアウト</button></li>
                 </>
               ) : (
                 <>
-                  <li><Link href="/login" className="hover:text-gray-300 transition-colors">ログイン</Link></li>
-                  <li><Link href="/user/register" className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">新規登録</Link></li>
+                  <li><Link href="/login" className="text-sm hover:text-gray-300 transition-colors">ログイン</Link></li>
+                  <li><Link href="/user/register" className="text-sm bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">新規登録</Link></li>
                 </>
               )}
             </ul>

@@ -25,11 +25,11 @@ const ReadAllItems = async () => {
                   alt={`${item.title} image`}
                   width={400}
                   height={400}
-                  className="rounded-2xl w-90 h-75"
+                  className="rounded-2xl md:w-90 md:h-75"
                   priority
                 />
-                  <p className="p-8">{item.title}</p>
-                  <p className="absolute bottom-4 right-4">¥{item.price}</p>
+                  <p className="p-8 hidden sm:block w-full whitespace-nowrap overflow-hidden text-ellipsis">{item.title}</p>
+                  <p className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 bg-gray-500 md:bg-transparent md:text-black text-white bg:text-black rounded">¥{item.price}</p>
               </div>
             </Link>
           </div>
