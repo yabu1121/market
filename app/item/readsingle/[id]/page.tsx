@@ -19,7 +19,7 @@ const ReadSinglePage = async ({ params }: Props) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex space-between">
+      <div className="space-between flex flex-nowrap horizontal">
         <ReturnButton />
         <DeleteButton params={id} />
         <UpdateButton params={id}/>
@@ -36,7 +36,7 @@ const ReadSinglePage = async ({ params }: Props) => {
           className="mb-4 max-w-wd"
           />
         )}
-      <p className="text-gray-700 wrap-break-words">{item.description}</p>
+      <h2 className="text-gray-700 break-all">{item.description}</h2>
       <p className="text-sm text-gray-500 mt-4">ID: {id}</p>
     </div>
   )

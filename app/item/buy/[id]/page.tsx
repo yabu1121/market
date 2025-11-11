@@ -1,10 +1,12 @@
 'use client'
-import { useParams } from "next/navigation"
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react";
 
 interface ItemData {
   title: string;
   price: number;
+  image: string;
   description: string;
 }
 
@@ -42,15 +44,52 @@ const BuyPage = () => {
     return <div>アイテムが見つかりません。</div>;
   }
 
+  const router = useRouter();
+  const handleBuyButton = () => {
+    const res = confirm("本当に購入しますか？取り消しはできません");
+    if(res){
+      alert("ご購入ありがとうございました。詳細はマイページにてご確認ください")
+      router.push("/");
+    }else{
+      alert("購入がキャンセルされました。");
+      router.push("/");
+    }
+  }
   return (
     <div>
-      id: {id}
-      <h1>{data.title}</h1>
-      <p>{data.price}円</p>
-      <p>{data.description}</p>
-      <button>購入</button>
+      <p className="m-8">id: {id}</p>
+      <div className="border rounded wrap-break-word w-100 items-center m-16 flex justify-between">
+        <div>
+          <h1>title</h1>
+          <p>{data.title}</p>
+        </div>
+        <div>
+          <Image
+            src={data.image}
+            alt={data.title}
+            width={200}
+            height={200}
+            className="p-4 rounded"
+          />
+        </div>
+      </div>
+
+      <div className="border rounded wrap-break-word m-16">
+        <h2>価格</h2>
+        <p>{data.price}円</p>
+      </div>
+
+      <div className="border rounded wrap-break-word m-16">
+        <h3>詳細</h3>
+        <p>{data.description}</p>
+      </div>
+      <button 
+        className="bg-red-400 px-8 py-4 hover:bg-red-300 m-auto block mb-16 text-center rounded-lg"
+        onClick={handleBuyButton}  
+      >購入</button>
     </div>
   )
 }
 
 export default BuyPage
+
