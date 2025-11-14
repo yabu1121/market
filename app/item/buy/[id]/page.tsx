@@ -1,6 +1,7 @@
 'use client'
+import ConfirmBuyButton from "@/app/components/ConfirmBuyButton";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
 interface ItemData {
@@ -18,13 +19,13 @@ const BuyPage = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchItem = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
         const res = await fetch(`http://localhost:3000/api/item/readsingle/${id}`);
-        
+
         if (!res.ok)throw new Error('データの取得に失敗しました');
-        const responseData = await res.json();         
-        setData(responseData.singleItem); 
+        const responseData = await res.json();
+        setData(responseData.singleItem);
 
       } catch (error) {
         console.error(error);
@@ -44,17 +45,6 @@ const BuyPage = () => {
     return <div>アイテムが見つかりません。</div>;
   }
 
-  const router = useRouter();
-  const handleBuyButton = () => {
-    const res = confirm("本当に購入しますか？取り消しはできません");
-    if(res){
-      alert("ご購入ありがとうございました。詳細はマイページにてご確認ください")
-      router.push("/");
-    }else{
-      alert("購入がキャンセルされました。");
-      router.push("/");
-    }
-  }
   return (
     <div>
       <p className="m-8">id: {id}</p>
@@ -83,10 +73,7 @@ const BuyPage = () => {
         <h3>詳細</h3>
         <p>{data.description}</p>
       </div>
-      <button 
-        className="bg-red-400 px-8 py-4 hover:bg-red-300 m-auto block mb-16 text-center rounded-lg"
-        onClick={handleBuyButton}  
-      >購入</button>
+      <ConfirmBuyButton itemId={id} />
     </div>
   )
 }
