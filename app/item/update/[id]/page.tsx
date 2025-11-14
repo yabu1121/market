@@ -14,7 +14,7 @@ const UpdatePage = () => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/item/readsingle/${id}`)
+        const res = await fetch(`https://market-he6qrhb7k-yabus-projects-9834b47a.vercel.app/api/item/readsingle/${id}`)
         const jsonData = await res.json()
 
         if (jsonData.singleItem) {

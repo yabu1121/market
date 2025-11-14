@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e :any) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/user/register",{
+      const res = await fetch("https://market-he6qrhb7k-yabus-projects-9834b47a.vercel.app/api/user/register",{
         method: "POST",
         headers: {
           "Accept": "application/json",

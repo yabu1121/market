@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     try {
-      const res = await fetch("/api/user/login", {
+      const res = await fetch("https://market-he6qrhb7k-yabus-projects-9834b47a.vercel.app/api/user/login", {
         method: "POST",
         headers: {
           "Accept": "application/json",

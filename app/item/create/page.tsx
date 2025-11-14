@@ -21,7 +21,7 @@ const CreatePage = () => {
 
       const payload = JSON.parse(atob(token.split('.')[1]))
 
-      const res = await fetch("/api/item/create", {
+      const res = await fetch("https://market-he6qrhb7k-yabus-projects-9834b47a.vercel.app/api/item/create", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
