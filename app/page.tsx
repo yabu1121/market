@@ -1,13 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import supabase from "@/app/utils/database";
 
 export const dynamic = "force-dynamic"
 
 const getAllItems = async () => {
-  const res = await fetch("http://localhost:3000/api/item/readall");
-  const jsonData = await res.json();
-  const allItems = jsonData.allItems;
-  return allItems;
+  try {
+    const { data, error } = await supabase.from("items").select();
+    if (error) throw new Error(error.message);
+    return data || [];
+  } catch (error) {
+    console.error("Failed to get all items:", error);
+    return [];
+  }
 }
 
 const ReadAllItems = async () => {

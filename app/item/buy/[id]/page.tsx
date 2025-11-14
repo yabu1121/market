@@ -21,7 +21,7 @@ const BuyPage = () => {
     const fetchItem = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3000/api/item/readsingle/${id}`);
+        const res = await fetch(`/api/item/readsingle/${id}`);
 
         if (!res.ok)throw new Error('データの取得に失敗しました');
         const responseData = await res.json();
