@@ -3,9 +3,8 @@ import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
 export async function middleware(request: NextRequest) {
-  // Authorizationヘッダーからトークンを取得
   const authHeader = request.headers.get("Authorization");
-  const token = authHeader?.split(" ")[1]; // "Bearer <token>"の形式を想定
+  const token = authHeader?.split(" ")[1];
   
   if (!token) {
     return NextResponse.json({ 
@@ -19,7 +18,6 @@ export async function middleware(request: NextRequest) {
     const secretKey = new TextEncoder().encode("next-market-route-handlers");
     const decodedJwt = await jwtVerify(token, secretKey);
     console.log(decodedJwt);
-    // トークンが有効な場合、リクエストを続行
     return NextResponse.next();
   } catch (error) {
     return NextResponse.json(
