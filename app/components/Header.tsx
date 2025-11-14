@@ -48,7 +48,7 @@ const Header = () => {
     <header className="bg-gray-800 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="md:text-2xl font-bold hover:text-gray-300 transition-colors">??オークション??</Link>
+          <Link href="/" className="md:text-2xl font-bold hover:text-gray-300 transition-colors">オークション</Link>
           <nav>
             <ul className="flex gap-6 items-center">
               <li><Link href="/" className="text-sm hover:text-gray-300 transition-colors">ホーム</Link></li>

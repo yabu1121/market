@@ -49,9 +49,9 @@ const BuyPage = () => {
     <div>
       <p className="m-8">id: {id}</p>
       <div className="border rounded wrap-break-word w-100 items-center m-16 flex justify-between">
-        <div>
+        <div className="w-100">
           <h1>title</h1>
-          <p>{data.title}</p>
+          <p className="w-70 wrap-break-word">{data.title}</p>
         </div>
         <div>
           <Image
